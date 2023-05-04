@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="getButton">GET</button>
+    <button id="postButton">POST</button>
+    <button id="deleteButton">DELETE</button>
+    <button id="jsonpButton">JSONP</button>
+
+    <script src="./JS/jquery-3.6.0.min.js"></script>
+    <script src="./JS/axios.min.js"></script>
+    <script>
+        let getButton = document.querySelector('#getButton')
+        getButton.addEventListener('click', () => {
+            axios({
+                method: 'GET',
+                url: 'http://127.0.0.1:8080/get',
+                //data: {name: 'bananaB', age: 19} //post使用data
+                params: {name: 'get', age: 1} //get使用params
+            }).then(function(res){
+                console.log(res.data)
+            })
+        })
+        let postButton = document.querySelector('#postButton')
+        postButton.addEventListener('click', () => {
+            axios({
+                method: 'POST',
+                url: 'http://127.0.0.1:8080/post',
+                data: {name: 'post', age: 2} //post使用data
+                //params: {name: 'bananaA', age: 19} //get使用params
+            }).then(function(res){
+                console.log(res.data)
+            })
+        })
+        let deleteButton = document.querySelector('#deleteButton')
+        deleteButton.addEventListener('click', () => {
+            axios({
+                method: 'DELETE',
+                url: 'http://127.0.0.1:8080/delete',
+                //data: {name: 'bananaB', age: 19} //post使用data
+                params: {name: 'delete', age: 3} //delete使用params
+            }).then(function(res){
+                console.log(res.data)
+            })
+        })
+        $('#jsonpButton').on('click', () => {
+            $.ajax({
+                method: 'GET', 
+                url: 'http://127.0.0.1:8080/jsonp', 
+                data: {name: 'jsonp', age: 4}, 
+                dataType: 'jsonp', //例如'jsonp' 發起JSONP請求
+                //以下2個是JSONP請求
+                jsonp: 'callback', //發送至服務端的參數名稱
+                jsonpCallback: 'jQueryxxx', //自訂回調函式名稱
+                contentType: false, //使用FormData的預設時不修改Content-Type
+                processData: false, //使用FormData不需進行編碼
+                success: function(res) {console.log(res);}, 
+                error: function(res) {console.log('失敗')}
+            })
+        })
+        
+    </script>
+</body>
+</html>

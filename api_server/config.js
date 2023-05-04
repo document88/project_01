@@ -1,0 +1,7 @@
+//Token的加密與還原密鑰與有效時間
+module.exports = {
+    jwtSecretKey: 'yourKey',
+    expiresIn: '10h'
+}
+//暫時的密鑰
+//Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiIiLCJwYXNzd29yZCI6IiQyYSQxMCRTMzgxc3poaXAyYXhRcUNKL2pELjR1VE9FcmV0cWF5UWZWN0MuU2VIWktUYVB1T1JYZ3k0NiIsIm5pY2tuYW1lIjpudWxsLCJlbWFpbCI6bnVsbCwidXNlcl9waWMiOiIiLCJpYXQiOjE2ODE0Nzk0NTAsImV4cCI6MTY4MTUxNTQ1MH0.9CLWevh9TJiRwy0DfEqc7sCTTtRqia4zkPhUjQNCGRA
